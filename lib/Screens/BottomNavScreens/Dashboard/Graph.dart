@@ -30,7 +30,6 @@ class _GraphWidgetState extends State<GraphWidget> {
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-      
           child: SizedBox(
             height: height * (70 / 804),
             width: width * (100 / 340),

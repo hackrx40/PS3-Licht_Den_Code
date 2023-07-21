@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:stockwatch/Auth/SignUp/BuildProfile.dart';
 import 'package:stockwatch/Screens/Drawer.dart';
 import 'package:stockwatch/Screens/News/NewsPage.dart';
 import 'package:stockwatch/Screens/Profile/Profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'BottomNavScreens/Dashboard/Dashboard.dart';
-import 'package: Screens/Recommendations/Recommendations.dart';
+import 'package:stockwatch/Screens/Recommendations/Recommendations.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage(
@@ -97,7 +96,7 @@ class _UserPageState extends State<UserPage> {
                     Icons.account_balance,
                     color: Colors.black,
                   ),
-                  label: "Recommendations",
+                  label: "Top Stocks",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(

@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:stockwatch/Screens/Recommendations/GaugeCard.dart';
+import 'package:stockwatch/Screens/Recommendations/RecommendationCard.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'dart:math' as math;
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class Recommendations extends StatefulWidget {
+  const Recommendations({Key? key}) : super(key: key);
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<Recommendations> createState() => _RecommendationsState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _RecommendationsState extends State<Recommendations> {
+  int selectedIndex = 0, score = 7;
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     return Stack(
       children: [
         Container(
@@ -36,67 +41,70 @@ class _DashboardState extends State<Dashboard> {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 25.0, left: 4, right: 4, bottom: 4),
+                  top: 20.0, left: 4, right: 4, bottom: 4),
               child: SingleChildScrollView(
                 clipBehavior: Clip.antiAlias,
                 physics: const ScrollPhysics(),
                 child: Column(
                   children: [
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          child: Text(
-                            "Stock Performance",
-                            style: TextStyle(
-                                fontFamily: "productSansReg",
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20),
-                          ),
-                        ),
-                      ),
-                    ),
-                    for (int index = 1; index < 5; index++)
-                      SizedBox(
-                        height: height * (70 / 840),
-                      ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const ScrollPhysics(),
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = index;
+                                  score = math.Random().nextInt(10);
+                                });
+                              },
+                              child: selectedIndex == index
+                                  ? const RecommendationCard(
+                                      color: false,
+                                      tickerName: "Stock Name",
+                                      companyName: "Company Name",
+                                    )
+                                  : const RecommendationCard(
+                                      color: true,
+                                      tickerName: "Stock Name",
+                                      companyName: "Company Name",
+                                    ));
+                        }),
+                    SizedBox(
+                      height: height * (70 / 840),
+                    )
                   ],
                 ),
               ),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: height * (50 / 840),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Best performing stocks currently",
-                  style: TextStyle(
-                      fontFamily: "productSansReg",
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: height * (50 / 840),
                 ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    color: Colors.white,
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "View your recommendations",
+                    style: TextStyle(
+                        fontFamily: "productSansReg",
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20),
                   ),
-                  borderRadius: BorderRadius.circular(7.0),
                 ),
-                elevation: 4,
-                shadowColor: Colors.black,
-              )
-            ],
+                GaugueCard(
+                  score: score,
+                )
+              ],
+            ),
           ),
         ),
       ],
