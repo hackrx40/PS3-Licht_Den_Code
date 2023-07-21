@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 SwiperCore.use([Autoplay]);
 SwiperCore.use([Navigation]);
 
-export default function StockCarousel({ color }) {
+export default function StockCarousel2({ color }) {
   const getPercentageColorClass = () => {
     if (color === 'green') {
       return 'bg-green-600';
@@ -35,12 +35,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">LT</p>
+                  <p className="text-sm font-bold leading-5 text-white">INFI</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  3.91%
+                  -7.73%
                 </p>
               </div>
             </li>
@@ -52,12 +52,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">ONGC</p>
+                  <p className="text-sm font-bold leading-5 text-white">HINDUNILVR</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  2.00%
+                  -3.60%
                 </p>
               </div>
             </li>
@@ -69,12 +69,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">NTPC</p>
+                  <p className="text-sm font-bold leading-5 text-white">HCL TECH</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  0.93%
+                  -3.17%
                 </p>
               </div>
             </li>
@@ -86,12 +86,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">SBIN</p>
+                  <p className="text-sm font-bold leading-5 text-white">WIPRO</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  0.87%
+                  -3.05%
                 </p>
               </div>
             </li>
@@ -103,12 +103,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">TATA MOTOR</p>
+                  <p className="text-sm font-bold leading-5 text-white">TCS</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  0.74%
+                  -2.58%
                 </p>
               </div>
             </li>
@@ -120,12 +120,12 @@ export default function StockCarousel({ color }) {
             <li className="flex flex-col justify-center items-center gap-x-6 py-2 px-6 rounded-md bg-gray-700 mx-1">
               <div className="flex gap-x-4">
                 <div className="min-w-0 flex flex-col items-start">
-                  <p className="text-sm font-bold leading-5 text-white">KOTAK BANK</p>
+                  <p className="text-sm font-bold leading-5 text-white">RELIANCE</p>
                 </div>
               </div>
               <div className="flex flex-col items-end">
                 <p className={`mt-1 text-sm leading-5 text-white py-2 px-6 rounded-lg ${getPercentageColorClass()}`}>
-                  0.67%
+                  -2.48%
                 </p>
               </div>
             </li>
