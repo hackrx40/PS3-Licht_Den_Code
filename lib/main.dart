@@ -1,7 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:stockwatch/Auth/Login.dart';
-import 'package:stockwatch/HomePage.dart';
 import 'package:stockwatch/Screens/Landing/LandingPages.dart';
 import 'Models/Utils.dart';
 

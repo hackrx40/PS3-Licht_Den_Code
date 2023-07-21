@@ -5,6 +5,7 @@ import 'package:stockwatch/Screens/News/NewsPage.dart';
 import 'package:stockwatch/Screens/Profile/Profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'BottomNavScreens/Dashboard/Dashboard.dart';
+import 'package: Screens/Recommendations/Recommendations.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage(
@@ -20,7 +21,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   int currentIndex = 1;
   final screens = [
-    const Text("2"),
+    const Recommendations(),
     const Dashboard(),
     const Text("3"),
   ];
