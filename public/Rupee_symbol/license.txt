@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rupee Symbol 01
+* source:	https://sketchfab.com/3d-models/rupee-symbol-01-5a623d426b744e62ac2fc8146ffac319
+* author:	Misam Ali Rizvi (https://sketchfab.com/MisamAliRizvi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rupee Symbol 01" (https://sketchfab.com/3d-models/rupee-symbol-01-5a623d426b744e62ac2fc8146ffac319) by Misam Ali Rizvi (https://sketchfab.com/MisamAliRizvi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
