@@ -96,7 +96,7 @@ class _UserPageState extends State<UserPage> {
                     Icons.account_balance,
                     color: Colors.black,
                   ),
-                  label: "Suggestions",
+                  label: "Recommendations",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(

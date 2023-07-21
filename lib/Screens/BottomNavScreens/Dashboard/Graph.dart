@@ -28,34 +28,36 @@ class _GraphWidgetState extends State<GraphWidget> {
     var width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: height * (70 / 804),
-        width: width * (100 / 340),
-        child: AspectRatio(
-          aspectRatio: 1.7,
-          child: LineChart(LineChartData(
-            gridData: const FlGridData(show: false),
-            titlesData: const FlTitlesData(show: false),
-            borderData: FlBorderData(
-              show: false,
-            ),
-            lineBarsData: [
-              LineChartBarData(
-                spots: list,
-                dotData: const FlDotData(show: false),
-                color: widget.isProfit ? Colors.green : Colors.red,
-                belowBarData: BarAreaData(
-                  show: true,
-                  color: widget.isProfit
-                      ? Colors.green.withOpacity(0.3)
-                      : Colors.red.withOpacity(0.3),
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+      
+          child: SizedBox(
+            height: height * (70 / 804),
+            width: width * (100 / 340),
+            child: AspectRatio(
+              aspectRatio: 1.7,
+              child: LineChart(LineChartData(
+                gridData: const FlGridData(show: false),
+                titlesData: const FlTitlesData(show: false),
+                borderData: FlBorderData(
+                  show: false,
                 ),
-              )
-            ],
-          )),
-        ),
-      ),
-    );
+                lineBarsData: [
+                  LineChartBarData(
+                    spots: list,
+                    dotData: const FlDotData(show: false),
+                    color: widget.isProfit ? Colors.green : Colors.red,
+                    belowBarData: BarAreaData(
+                      show: true,
+                      color: widget.isProfit
+                          ? Colors.green.withOpacity(0.3)
+                          : Colors.red.withOpacity(0.3),
+                    ),
+                  )
+                ],
+              )),
+            ),
+          ),
+        ));
   }
 }
