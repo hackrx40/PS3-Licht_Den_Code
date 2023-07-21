@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stockwatch/Models/Utils.dart';
 import 'package:stockwatch/Screens/UserPage.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -361,10 +362,13 @@ class _BuildProfileState extends State<BuildProfile> {
 
   Future postProfileData(String? risk) async {
     List list = [];
+    var pref = await SharedPreferences.getInstance();
+    String? token = pref.getString('token');
     String url = "https://ff0a-103-68-38-66.ngrok-free.app/stock/getStocks";
     http.Response response = await http.post(Uri.parse(url),
         headers: <String, String>{
           'Content-Type': 'application/json',
+          'Authorization': "Bearer $token"
         },
         body: jsonEncode(<String, dynamic>{
           "watchlist": watchlistHolding,

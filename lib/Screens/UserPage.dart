@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stockwatch/Screens/Drawer.dart';
+import 'package:stockwatch/Screens/BottomNavScreens/Analytics/TradingView.dart';
+import 'package:stockwatch/Screens/Drawer/Drawer.dart';
 import 'package:stockwatch/Screens/News/NewsPage.dart';
-import 'package:stockwatch/Screens/Profile/Profile.dart';
+import 'package:stockwatch/Screens/Drawer/Profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'BottomNavScreens/Dashboard/Dashboard.dart';
-import 'package:stockwatch/Screens/Recommendations/Recommendations.dart';
+import 'package:stockwatch/Screens/BottomNavScreens/Recommendations/Recommendations.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage(
@@ -22,7 +23,7 @@ class _UserPageState extends State<UserPage> {
   final screens = [
     const Recommendations(),
     const Dashboard(),
-    const Text("3"),
+    const TradingView(),
   ];
 
   @override

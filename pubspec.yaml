@@ -53,6 +53,9 @@ dependencies:
   youtube_player_flutter:
   conditional_builder_null_safety:
   syncfusion_flutter_gauges: 
+  flutter_webview_plugin: ^0.4.0
+  sqflite:
+  flutter_inappwebview: ^5.7.2+3
 
 
 
