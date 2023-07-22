@@ -4,7 +4,7 @@ const axios = require("axios");
 const fs = require("fs");
 const { Blob } = require("buffer");
 
-const BASE_URL = "https://f563-59-97-191-226.ngrok-free.app";
+const BASE_URL = "https://8a2d-35-230-62-233.ngrok-free.app";
 
 const signup = async (req, res) => {
   try {
@@ -143,7 +143,29 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req,res) => {
+	try {
+		const token = req.token;
+        const currentUser = req.user;
+
+        currentUser.tokens = currentUser.tokens.filter((usertoken) => {
+            return usertoken.token !== token;
+        });
+
+        await currentUser.save();
+
+        res.status(200).json({
+            message: 'Logged Out Successfully'
+        });
+	} catch (error) {
+		res.status(400).json({
+			message: error.message
+		});
+	}
+}
+
 module.exports = {
   signup,
   login,
+  logout
 };
