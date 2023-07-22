@@ -4,7 +4,7 @@ import image from './assets/image1.png'
 // import Login from '../pages/Login';
 // import MyContext from './MyContext';
 
-export default function Navbar() {
+export default function Navbar2() {
     const navigate = useNavigate()
 
     const [logged,setLogged] = useState(false);
@@ -56,21 +56,15 @@ export default function Navbar() {
 
             <a href="#" className="text-md font-semibold leading-6 text-gray-200 hover:font-extrabold hover:shadow-xl transition-all ease-in duration-100 p-2 rounded-lg" onClick={()=>{}}>About Us</a>
         </div>
-        {!logged?(
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-200 mr-2 p-2 hover:bg-violet-500 rounded-md transition-all duration-500 ease-in-out border-2 border-violet-500" onClick={()=>{navigate("/Signup")}}>Sign Up <span aria-hidden="true"></span></a>
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-200 p-2 hover:bg-violet-500 rounded-md transition-all duration-500 ease-in-out border-2  border-violet-500" onClick={()=>{navigate("/Login")}}>Log in <span aria-hidden="true">&rarr;</span></a>
-        </div>
-
-        ):(
+  
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="#" className="text-sm font-semibold leading-6 text-gray-200 mr-2 p-2 hover:bg-violet-500 rounded-md transition-all duration-500 ease-in-out border-2 border-violet-500" onClick={()=>{navigate("/preferences")}}> PREFERENCES <span aria-hidden="true"></span></a>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-200 p-2 hover:bg-violet-500 rounded-md transition-all duration-500 ease-in-out border-2  border-violet-500" onClick={handleLogOut}>Log Out <span aria-hidden="true">&rarr;</span></a>
         </div>
 
-        )
         
-    }
+        
+    
         </nav>
         
         
