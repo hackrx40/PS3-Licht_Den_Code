@@ -10,13 +10,16 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Navbar2 from '../components/Navbar2';
+import { Article } from '../components/Article';
 
 SwiperCore.use([Autoplay]);
 SwiperCore.use([Navigation]);
 
 export default function Recommend() {
   const [stockNames,setStockNames] = useState([])
-  const[showArticle,setShowArticle] = useState(false)
+  const [selectedStock, setSelectedStock] = useState('');
+  const [sendStockName, setSendStockName] = useState('');
+  const [articles, setArticles] = useState('');
   // const getPercentageColorClass = () => {
   //   if (color === 'green') {
   //     return 'bg-green-600';
@@ -40,11 +43,43 @@ export default function Recommend() {
     fetchData(); // Call the async function inside useEffect
   }, []);
 
-  const handleShowArticle = () => {
-    setShowArticle(true);
+  const handleArticleClicked = async (val) => {
+    // Do something with the 'val' received from the Article component
+    console.log('Received value:', val);
+    try {
+      const res = await axios.post('https://8a2d-35-230-62-233.ngrok-free.app/sentiment', {
+      bank_name:val,
+      }, );
+      console.log(val)
+      console.log(res?.data);
+      setArticles(res?.data)
+      // Handle the response from the server as needed
+      } catch (error) {
+      console.error(error);
+      // Handle error case
+      }
+
   }
+
+
+      const getArticle = async () => {
+        try {
+          const res = await axios.post('https://8a2d-35-230-62-233.ngrok-free.app/sentiment', {
+          bank_name:sendStockName,
+          }, );
+          console.log(sendStockName)
+          console.log(res.data);
+          // Handle the response from the server as needed
+          } catch (error) {
+          console.error(error);
+          // Handle error case
+          }
+    
+    
+      }
+
     const mapper = [10,10,10,10,10,10,10,10,10,10,10,10]
-    const progress = 0.66;
+    // const progress = 0.66;
 
   return (
     <div className='pt-24 bg-cover bg-gray-900 h-max py-10'>
@@ -53,7 +88,7 @@ export default function Recommend() {
           <div className='flex flex-col items-center'>
             <p className="mb-4 mx-4 text-6xl font-extrabold tracking-tight text-white sm:text-3xl">BUYING RECOMMENDATIONS  </p>
             <div className=' items-center grid grid-cols-1 '>
-            {stockNames.map((val)=>(
+            {stockNames.map((val,index)=>(
               <li className="flex flex-row justify-center items-center gap-x-6 p-6 rounded-md bg-gray-700 m-4">
                 <div>
                 <div className="flex gap-x-4 items-center justify-center">
@@ -61,13 +96,13 @@ export default function Recommend() {
                     <p className="text-lg font-bold leading-5 text-white">{val}</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center">
+                {/* <div className="flex flex-col items-center">
                   <p className={`m-4 text-sm leading-5 text-white py-2 px-6 rounded-lg bg-red-500`}>
                     XY%
                   </p>
-                </div>
+                </div> */}
                 <div> 
-                  <CircularProgressbar value={progress*100} text={`${progress * 100}%`} className='w-36 h-36'
+                  <CircularProgressbar value={ (Math.round(0.5 + Math.random() * 0.5)*100)} text={`${Math.round(( 0.5 + Math.random() * 0.5) * 100)}%`} className='w-36 h-36'
                     styles={buildStyles({
                       // Rotation of path and trail, in number of turns (0-1)
                       // rotation: 0.25,
@@ -87,7 +122,7 @@ export default function Recommend() {
                       // pathTransition: 'none',
                   
                       // Colors
-                      pathColor: `rgba(0, 0, 255, ${progress})`,
+                      pathColor: `rgba(0, 0, 255, ${(0.5 + Math.random() * 0.5)})`,
                       textColor: '#fff',
                       trailColor: '#d6d6d6',
                       backgroundColor: '#3e98c7',
@@ -96,7 +131,7 @@ export default function Recommend() {
                 </div>
                 </div>
                 <div>
-                  <div>
+                  {/* <div>
                     {!showArticle?(
                       <div>
                       <button className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-800 " onClick={handleShowArticle}>
@@ -123,10 +158,8 @@ export default function Recommend() {
                   </SwiperSlide>
                     )}
                     
-
-                  
-
-                  </div>
+                  </div> */}
+                <Article articles={articles} val={val} sendStockName={sendStockName} setSendStockName={setSendStockName} getArticle={getArticle} handleArticleClicked={handleArticleClicked}/>
                 </div>
               </li> 
               ))
