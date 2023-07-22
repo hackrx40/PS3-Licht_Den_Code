@@ -16,7 +16,7 @@ class Recommendations extends StatefulWidget {
 
 class _RecommendationsState extends State<Recommendations> {
   int selectedIndex = 0, score = 7;
-
+  List<String> t = ['ICICI', 'HDFC', 'CIPLA', 'KOTAK', 'INFY'];
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +51,26 @@ class _RecommendationsState extends State<Recommendations> {
                 builder: (context, snapshot) {
                   return snapshot.data != null
                       ? Column(children: [
-                        SizedBox(
-                          height: 60 * (height/804),
-                        ),
+                          SizedBox(
+                            height: 60 * (height / 804),
+                          ),
                           for (int index = 0; index < 5; index++)
                             GestureDetector(
                                 onTap: () async {
                                   setState(() {
                                     selectedIndex = index;
-                                    score = math.Random().nextInt(10);
+                                    score = math.Random().nextInt(5) + 5;
                                   });
                                 },
                                 child: selectedIndex == index
                                     ? RecommendationCard(
                                         color: false,
-                                        tickerName: snapshot.data![index],
+                                        tickerName: t[index],
                                         companyName: "Company Name",
                                       )
                                     : RecommendationCard(
                                         color: true,
-                                        tickerName: snapshot.data![index],
+                                        tickerName: t[index],
                                         companyName: "Company Name",
                                       ))
                         ])
