@@ -65,7 +65,7 @@ class _RecommendationCardState extends State<RecommendationCard> {
                           borderRadius: BorderRadius.circular(7.0),
                         ))),
                     onPressed: () async {
-                      await getArticles(widget.companyName);
+
                     },
                     child: const Text(
                       "Know More",
@@ -78,80 +78,5 @@ class _RecommendationCardState extends State<RecommendationCard> {
         ],
       ),
     );
-  }
-
-  Future<List<String>> getRecs() async {
-    List<String> list = [];
-    var pref = await SharedPreferences.getInstance();
-    String? token = pref.getString('token');
-    String url = "https://ff0a-103-68-38-66.ngrok-free.app/sentiment";
-    http.Response response = await http.post(
-      Uri.parse(url),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-      },
-    );
-    if (kDebugMode) {
-      print(response.body);
-    }
-    try {
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        if (kDebugMode) {
-          print(data["rec"]);
-        }
-        for (String t in data["rec"]) {
-          list.add(t);
-        }
-      } else {
-        if (kDebugMode) {
-          print(response.statusCode);
-        }
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
-    }
-    return list;
-  }
-
-  Future<List<dynamic>> getArticles(String name) async {
-    List<String> list1 = [], list2 = [];
-    var pref = await SharedPreferences.getInstance();
-    String? token = pref.getString('token');
-    String url = "https://e8f2-35-230-62-233.ngrok-free.app/sentiment";
-    http.Response response = await http.post(Uri.parse(url),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode(<String, String>{'bank_name': "$name"}));
-    if (kDebugMode) {
-      print(response.body);
-    }
-    try {
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        Articles x = Articles.fromJson(data);
-        if (kDebugMode) {
-          print(x.title);
-        }
-        for (String t in data["rec"]) {
-          list1.add(t);
-        }
-        for (String t in data["scores"]) {
-          list2.add(t);
-        }
-      } else {
-        if (kDebugMode) {
-          print(response.statusCode);
-        }
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
-    }
-    return [list1, list2];
   }
 }

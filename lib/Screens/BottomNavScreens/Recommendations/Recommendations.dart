@@ -17,6 +17,7 @@ class Recommendations extends StatefulWidget {
 class _RecommendationsState extends State<Recommendations> {
   int selectedIndex = 0, score = 7;
 
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -116,7 +117,7 @@ class _RecommendationsState extends State<Recommendations> {
     List<String> list = [];
     var pref = await SharedPreferences.getInstance();
     String? token = pref.getString('token');
-    String url = "https://ff0a-103-68-38-66.ngrok-free.app/stock/stockRec";
+    String url = "https://2f1e-35-230-62-233.ngrok-free.app/sentiment";
     http.Response response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
