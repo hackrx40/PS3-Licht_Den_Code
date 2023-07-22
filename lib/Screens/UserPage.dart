@@ -103,7 +103,7 @@ class _UserPageState extends State<UserPage> {
               items: const [
                 BottomNavigationBarItem(
                   icon: FaIcon(
-                    Icons.account_balance,
+                    Icons.monetization_on_outlined,
                     color: Colors.black,
                   ),
                   label: "Top Stocks",

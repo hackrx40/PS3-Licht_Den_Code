@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class CarouselCard extends StatefulWidget {
-  const CarouselCard({Key? key, required this.stockName}) : super(key: key);
+  const CarouselCard({Key? key, required this.stockName, required this.risk, required this.current, required this.expected})
+      : super(key: key);
 
   final String stockName;
+  final int risk, current, expected;
 
   @override
   State<CarouselCard> createState() => _CarouselCardState();
@@ -13,7 +15,6 @@ class CarouselCard extends StatefulWidget {
 class _CarouselCardState extends State<CarouselCard> {
   @override
   Widget build(BuildContext context) {
-
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
@@ -68,14 +69,14 @@ class _CarouselCardState extends State<CarouselCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircularPercentIndicator(
-                    backgroundColor: Colors.black54!,
+                    backgroundColor: Colors.black54,
                     radius: 30.0,
                     lineWidth: 10.0,
                     animation: true,
                     percent: 0.54,
-                    center: const Text(
-                      "54",
-                      style: TextStyle(
+                    center: Text(
+                      widget.risk.toString(),
+                      style: const TextStyle(
                           fontFamily: "productSansReg",
                           fontWeight: FontWeight.bold,
                           fontSize: 12.0),
@@ -91,27 +92,27 @@ class _CarouselCardState extends State<CarouselCard> {
                     circularStrokeCap: CircularStrokeCap.round,
                     progressColor: Colors.black,
                   ),
-                  const Column(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  Text("Current",
+                                  const Text("Current",
                                       style: TextStyle(
                                           fontFamily: "productSansReg",
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14)),
-                                  Text("Rs. 2300",
-                                      style: TextStyle(
+                                  Text("Rs. ${widget.current}",
+                                      style: const TextStyle(
                                           fontFamily: "productSansReg",
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
@@ -120,17 +121,17 @@ class _CarouselCardState extends State<CarouselCard> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  Text("Expected",
+                                  const Text("Expected",
                                       style: TextStyle(
                                           fontFamily: "productSansReg",
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14)),
-                                  Text("Rs. 2400",
-                                      style: TextStyle(
+                                  Text("Rs. ${widget.expected}",
+                                      style: const TextStyle(
                                           fontFamily: "productSansReg",
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,

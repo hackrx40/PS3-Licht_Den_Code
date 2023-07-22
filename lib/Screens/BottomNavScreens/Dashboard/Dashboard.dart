@@ -168,6 +168,17 @@ class _DashboardState extends State<Dashboard> {
     "BAJAJ-AUTO.NS",
   ];
 
+  List<String> temp1 = [
+    "BHARTIARTL",
+    "POWERGRID",
+    "ICICIBANK",
+    "ASIANPAINT",
+    "BRITANNIA",
+  ];
+  List<int> risk = [45, 32, 21, 67, 34];
+  List<int> current = [450, 320, 210, 670, 389];
+  List<int> expected = [465, 327, 278, 731, 400];
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -254,11 +265,14 @@ class _DashboardState extends State<Dashboard> {
               ),
               CarouselSlider.builder(
                 carouselController: CarouselController(),
-                itemCount: 10,
+                itemCount: 5,
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) {
-                  return const CarouselCard(
-                    stockName: "Stock Name",
+                  return CarouselCard(
+                    stockName: temp1[itemIndex],
+                    risk: risk[itemIndex],
+                    expected: expected[itemIndex],
+                    current: current[itemIndex],
                   );
                 },
                 options: CarouselOptions(autoPlay: true),

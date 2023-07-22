@@ -49,9 +49,9 @@ class _GaugueCardState extends State<GaugueCard> {
                                 gradient: const SweepGradient(
                                     endAngle: math.pi,
                                     colors: [
-                                      Colors.green,
-                                      Colors.orange,
                                       Colors.red,
+                                      Colors.orange,
+                                      Colors.green,
                                     ]),
                               ),
                             ],

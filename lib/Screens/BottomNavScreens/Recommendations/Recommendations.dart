@@ -51,7 +51,7 @@ class _RecommendationsState extends State<Recommendations> {
                   return snapshot.data != null
                       ? Column(children: [
                         SizedBox(
-                          height: 20 * (height/804),
+                          height: 60 * (height/804),
                         ),
                           for (int index = 0; index < 5; index++)
                             GestureDetector(
