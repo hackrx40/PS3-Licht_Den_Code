@@ -70,7 +70,7 @@ const SignUp = () => {
       console.log(password);
       const formData = new FormData();
       formData.append('file', file);
-      const res = await axios.post('https://2c37-103-149-94-242.ngrok-free.app/auth/signup',formData ,{
+      const res = await axios.post('https://ff0a-103-68-38-66.ngrok-free.app/auth/signup',formData ,{
         headers: {
           'Content-Type': 'multipart/form-data',
           email: email,
@@ -295,6 +295,14 @@ function onChange()
           </button>}
           </div>
         </form>
+        <div className='flex justify-center items-center'>
+        <p className="mt-4 text-white">
+          Already have an account?{' '}
+          <Link to="/login" className="text-blue-500">
+            LogIn
+          </Link>
+        </p>
+        </div>
         </div>
       </div>
     </div>

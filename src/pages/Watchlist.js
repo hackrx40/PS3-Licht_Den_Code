@@ -3,24 +3,47 @@ import Stock from '../components/Stock';
 import Navbar from '../components/Navbar';
 import LineChart from '../components/LineChart'
 import { Typewriter } from 'react-simple-typewriter'
-import StockCarousel from '../components/StockCarousel.js';
+import StockCarousel from '../components/StockCarousel';
 import News from '../components/News';
-// import {motion} from 'framer-motion'
+import { useNavigate } from "react-router-dom";
+import StockCarousel2 from '../components/StockCarousel2';
+import axios from 'axios';
+import Navbar2 from '../components/Navbar2';
 
 export default function Watchlist() {
 
   const [showWatchlist, setShowWatchlist] = useState(true);
-
+  const [watchlist,setWatchlist] = useState([])
+  const [portfolio,setPortfolio] = useState([])
+  const navigate = useNavigate()
   // Function to toggle between watchlist and portfolio list
   const toggleList = () => {
     setShowWatchlist(!showWatchlist);
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.post('https://ff0a-103-68-38-66.ngrok-free.app/stock/sendStocks', {}, { headers: { 'Authorization': `Bearer ${localStorage.getItem('jwt')}`}});
+        console.log(res);
+        setWatchlist(res?.data?.sendStockData?.watchlist_final);
+        setPortfolio(res?.data?.sendStockData?.portfolio_final);
+        // Handle the response from the server as needed
+      } catch (error) {
+        console.error(error);
+        // Handle error case
+      }
+    };
+
+    fetchData(); // Call the async function inside useEffect
+  }, []);
+
   return (
     <div className="relative flex flex-col md:flex-row min-h-screen bg-gray-900 bg-auto pb-6">
-      <Navbar />
+      <Navbar2 />
 
       <div className="flex flex-col mt-12 p-5 items-left h-screen mb-10 rounded-lg overflow-y-auto overflow-x-hidden sm:w-1/3 bg-gray-800 no-scrollbar">
-        <div className='flex flex-row justify-between'>
+      <button className="hover:scale-105 transition-transform duration-1000 bg-gradient-to-r  from-violet-600 to-blue-600 text-white font-bold p-3 mt-4 rounded-lg" onClick={()=>{navigate("/Recommend")}}>GET YOUR RECOMMENDATIONS</button>
+      <div className='flex flex-row justify-between'>
         <p className="mt-2 text-left text-6xl font-extrabold tracking-tight text-white sm:text-3xl">
           <Typewriter
             words={[showWatchlist ? 'My Watchlist' : 'My Portfolio']}
@@ -38,23 +61,17 @@ export default function Watchlist() {
         </div>
 
         <ul role="list" className="mt-4">
-          {showWatchlist ? (
-            <li>
-              <Stock />
-              <Stock />
-              <Stock />
-              <Stock />
-              <Stock />
-            </li>
-          ) : (
-            <li>
-              <Stock />
-              <Stock />
-              <Stock />
-              <Stock />
-              <Stock />
-            </li>
-          )}
+        {showWatchlist ? (
+          <li>
+            {watchlist.map((ticker, index) => (
+              <Stock key={index} ticker={ticker} />
+            ))}
+          </li>
+        ) : (
+          <li>    {portfolio.map((ticker, index) => (
+            <Stock key={index} ticker={ticker} />
+          ))}</li>
+        )}
         </ul>
         {/* Button to toggle between watchlist and portfolio list */}
         
@@ -90,7 +107,7 @@ export default function Watchlist() {
                 />
               </span>
             </p>
-            <StockCarousel color="red" />
+            <StockCarousel2 color="red" />
           </div>
 
         </div>

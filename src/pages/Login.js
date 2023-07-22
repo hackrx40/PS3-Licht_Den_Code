@@ -7,6 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Webcam from "react-webcam";
 import axios from 'axios'
 import { calculateNewValue } from '@testing-library/user-event/dist/utils';
+// import MyContext from '../components/MyContext'
 
 const videoConstraints = {
   width: 100,
@@ -15,6 +16,8 @@ const videoConstraints = {
   mirrored:'False'
 };
 const Login = () => {
+
+  // const { logged, setLogged } = useContext(MyContext);
 
   const navigate=useNavigate()
     const [email, setEmail] = useState('');
@@ -37,32 +40,39 @@ const Login = () => {
       console.log(password)
       const formData = new FormData();
       formData.append('file', file);
-      const res = await axios.post('https://2c37-103-149-94-242.ngrok-free.app/auth/login',formData ,{
+      const res = await axios.post('https://ff0a-103-68-38-66.ngrok-free.app/auth/login',formData ,{
         headers: {
           'Content-Type': 'multipart/form-data',
           email: email,
           password: password,
         }
       });
-      
-      console.log(res);
+      console.log(res?.data?.isLoggedIn)
+      console.log(res.token);
+      console.log(res)
      
       if (res.status === 200) {
         flag=true
         localStorage.setItem('flag', flag);
+        const tok = res.data.token
+        localStorage.setItem('jwt', tok);
         console.log(flag);
-        navigate('/dashboard');
+        // navigate('/dashboard');
+        if(res?.data?.isLoggedIn===true){
+          navigate('/preferences');
+        }
+        if(res?.data?.isLoggedIn===false){
+          navigate('/dashboard');
+        }
+
       }
       
       else{
         console.log('wrong pass')
       }
+
+      // setLogged(true);
     };
-
-
-
-
-
 
 //THE CAPTCHA PART
 const key="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
@@ -174,7 +184,7 @@ function onChange()
         <div className='flex justify-center items-center'>
         <p className="mt-4 text-white">
           Don't have an account?{' '}
-          <Link to="/register" className="text-blue-500">
+          <Link to="/signup" className="text-blue-500">
             SignUp
           </Link>
         </p>
