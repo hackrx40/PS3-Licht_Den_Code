@@ -219,14 +219,14 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                     for (int index = 1; index < 5; index++)
-                      // StockTickerCard(
-                      //   index: index,
-                      //   tickerName: lst[index],
-                      //   companyName: companyNames[index],
-                      //   companyAcronym: yahooFinanceNames[index],
-                      // ),
+                      StockTickerCard(
+                        index: index,
+                        tickerName: lst[index],
+                        companyName: companyNames[index],
+                        companyAcronym: yahooFinanceNames[index],
+                      ),
                     SizedBox(
-                      height: height * (70 / 840),
+                      height: height * (160 / 840),
                     ),
                   ],
                 ),

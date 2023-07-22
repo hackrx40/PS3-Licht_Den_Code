@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stockwatch/Screens/BottomNavScreens/Analytics/TradingView.dart';
+import 'package:stockwatch/Screens/Chat/ChatPage.dart';
 import 'package:stockwatch/Screens/Drawer/Drawer.dart';
 import 'package:stockwatch/Screens/News/NewsPage.dart';
 import 'package:stockwatch/Screens/Drawer/Profile.dart';
@@ -33,6 +34,14 @@ class _UserPageState extends State<UserPage> {
 
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ChatPage()));
+          },
+          backgroundColor: Colors.blueGrey,
+          child: const FaIcon(FontAwesomeIcons.robot),
+        ),
         extendBodyBehindAppBar: true,
         extendBody: true,
         appBar: AppBar(
